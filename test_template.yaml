@@ -1,0 +1,17 @@
+parameters:
+  - name: run_sca
+	displayName: Execute Static Code Analysis
+	type: boolean
+	default: false
+  - name: run_oss
+	displayName: Execute Open Source Scanning
+	type: boolean
+	default: false
+	
+    steps:
+      - ${{ if eq(parameters.run_sca, true) }}:
+		- script: echo "Executing static code analysis using SonarQube"
+		- displayName: Executing Static Code Analysis
+      - ${{ if eq(parameters.run_oss, true) }}:
+		- script: echo "Executing Open Source Scanning"
+		- displayName: Executing Open Source Scanning
